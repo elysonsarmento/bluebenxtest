@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "734918323058",
+    "project_id": "testeapp-923bc",
+    "storage_bucket": "testeapp-923bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734918323058:android:2e46eb0734dfd34fadcbeb",
+        "android_client_info": {
+          "package_name": "com.bluebenx.teste.bluebenxtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734918323058-fkqus6pqnkq357d3ug7q96etqp7921m5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtUOZg7Vhz3T-iYdwmOKyZdd0ayl5M5G4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734918323058-fkqus6pqnkq357d3ug7q96etqp7921m5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
