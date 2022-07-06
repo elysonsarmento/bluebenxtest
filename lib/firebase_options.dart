@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,9 +43,19 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyACx64qYpBw3m9J8V7_K7EzIrYVs4vA1ho',
+    appId: '1:734918323058:web:c8b34f4ef0d6751badcbeb',
+    messagingSenderId: '734918323058',
+    projectId: 'testeapp-923bc',
+    authDomain: 'testeapp-923bc.firebaseapp.com',
+    storageBucket: 'testeapp-923bc.appspot.com',
+    measurementId: 'G-D94SJ3HHNL',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCtUOZg7Vhz3T-iYdwmOKyZdd0ayl5M5G4',
-    appId: '1:734918323058:android:2e46eb0734dfd34fadcbeb',
+    appId: '1:734918323058:android:529d5fbe72cdff76adcbeb',
     messagingSenderId: '734918323058',
     projectId: 'testeapp-923bc',
     storageBucket: 'testeapp-923bc.appspot.com',
@@ -59,11 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAKuETUjV98bWWGAia4lkMr2stSgnrhwPs',
-    appId: '1:734918323058:ios:c9409a2c341ccc77adcbeb',
+    appId: '1:734918323058:ios:29af21e7b87e9c87adcbeb',
     messagingSenderId: '734918323058',
     projectId: 'testeapp-923bc',
     storageBucket: 'testeapp-923bc.appspot.com',
     iosClientId: '734918323058-f9kh5isqid3pomdcibritqq03csqrpmn.apps.googleusercontent.com',
     iosBundleId: 'com.bluebenx.teste.bluebenxtest',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAKuETUjV98bWWGAia4lkMr2stSgnrhwPs',
+    appId: '1:734918323058:ios:6ebb97ab6b198b87adcbeb',
+    messagingSenderId: '734918323058',
+    projectId: 'testeapp-923bc',
+    storageBucket: 'testeapp-923bc.appspot.com',
+    iosClientId: '734918323058-p4boc1541scvrtaiocerh4dncuki6m2n.apps.googleusercontent.com',
+    iosBundleId: 'teste',
   );
 }
