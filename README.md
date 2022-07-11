@@ -31,5 +31,5 @@ e a senha: 123456
 
 ## Screenshot
 
-![alt text](https://github.com/elysonsarmento/bluebenxtest/blob/master/image/Screenshot_1657544844.png?raw=true)
-![alt text](https://github.com/elysonsarmento/bluebenxtest/blob/master/image/Screenshot_1657545729.png?raw=true)
+<img src="https://github.com/elysonsarmento/bluebenxtest/blob/master/image/Screenshot_1657544844.png?raw=true" alt="InfiniteGraph Logo" width="300">
+<img src="https://github.com/elysonsarmento/bluebenxtest/blob/master/image/Screenshot_1657545729.png?raw=true" alt="InfiniteGraph Logo" width="300">
