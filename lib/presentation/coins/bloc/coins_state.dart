@@ -10,3 +10,5 @@ class CoinsSucess extends CoinsState {
 
   CoinsSucess(this.listCoins);
 }
+
+class CoinsErrorRequest extends CoinsState {}

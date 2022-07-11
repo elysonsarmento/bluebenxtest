@@ -23,8 +23,8 @@ class CoinsList extends StatelessWidget {
                 return Container(
                   color: Colors.grey,
                   height: 120,
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 40, ),
+                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 40, ),
                   child: Row(
                     
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,13 +35,13 @@ class CoinsList extends StatelessWidget {
                            coin.image!,
                            width: 70,
                           ),
-                          SizedBox(width: 15,),
+                          const SizedBox(width: 15,),
                            Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                              mainAxisAlignment: MainAxisAlignment.center,
                              children: [
                                Text('${coin.name}'),
-                               SizedBox(
+                               const SizedBox(
                                  height: 30,
                                ),
                                Text('vol.: ${coin.total_volume?.toStringAsExponential(3)}'),
@@ -53,7 +53,7 @@ class CoinsList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text( "R\$"  + NumberFormat("#,##0.00", "en_US").format(coin.current_price)),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           
@@ -65,7 +65,7 @@ class CoinsList extends StatelessWidget {
               }),
             );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),

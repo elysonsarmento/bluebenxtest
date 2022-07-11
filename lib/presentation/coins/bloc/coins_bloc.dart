@@ -12,11 +12,10 @@ class CoinsBloc extends Bloc<CoinsEvent, CoinsState> {
   CoinsBloc(this.useCase) : super(CoinsLoading()) {
     on<CoinsLoadingEvent>((event, emit) async{
       try {
-       final result =  await useCase.fetchCoins();
-       print(result);
+       final result = await useCase.fetchCoins();
        emit(CoinsSucess(result));
       } catch (e) {
-        print(e);
+        emit(CoinsErrorRequest());
       }
     });
   }

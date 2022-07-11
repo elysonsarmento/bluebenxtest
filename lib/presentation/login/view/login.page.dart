@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final userTextController =
-      TextEditingController(text: "elyson.sousa@outlook.com");
-  final passwordTextController = TextEditingController(text: "123456");
+      TextEditingController();
+  final passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
