@@ -1,16 +1,30 @@
-# bluebenxtest
+# Teste técnico bluebenx
 
-A new Flutter project.
+Essa é uma aplicação criada em flutter com o intuito de fazer o login e em seguida fazer a requisição na API solicitada, onde mostrará uma lista de criptomoedas e algumas infomações sobre a moeda
 
-## Getting Started
+## Para instalar o projeto.
 
-This project is a starting point for a Flutter application.
+1- Para rodar o projeto é necessário ter o flutter instalado na sua máquina, para isso, siga o tutorial da documentação oficial: https://flutter.dev/docs/get-started/install
 
-A few resources to get you started if this is your first Flutter project:
+2- Com o flutter instalado, rode o comando "flutter doctor" e tenha certeza que está tudo ok.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3- Conecte um aparelho no seu computador e tenha certeza que ele está com a opção de Ancoragem USB habilitada OU rode o emulador do android studio.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4- Após resolver os warnings/issues do passo 2, e executar o passo 3 com sucesso, clone o projeto e abra um terminal no diretorio onde vc clonou-o.
+
+5- Agora basta executar o comando "flutter run" e o aplicativo será instalado e executado (Somente em dispositivos android).
+
+
+## Para usar o projeto.
+
+use o email: elyson.sousa@outlook.com 
+e a senha: 123456
+## Pacotes do Flutter
+
+#### Para integração com API rest:
+
+- freezed
+- dio
+
+#### Para gerenciamento de estados, dependências e rotas
+- BLoC
