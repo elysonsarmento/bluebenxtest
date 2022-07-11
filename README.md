@@ -28,3 +28,8 @@ e a senha: 123456
 
 #### Para gerenciamento de estados, dependências e rotas
 - BLoC
+
+## Screenshot
+
+![alt text](https://github.com/elysonsarmento/bluebenxtest/blob/master/image/Screenshot_1657544844.png?raw=true)
+![alt text](https://github.com/elysonsarmento/bluebenxtest/blob/master/image/Screenshot_1657545729.png?raw=true)
