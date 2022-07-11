@@ -1,12 +1,16 @@
-import 'package:bluebenxtest/data/dataSources/firebase.datasource.implements.dart';
-import 'package:bluebenxtest/data/dataSources/firebase.datasources.dart';
-import 'package:bluebenxtest/data/repositories/auth.implements.dart';
-import 'package:bluebenxtest/domain/entities/user.entity.dart';
-import 'package:bluebenxtest/domain/repositories/auth.repositoy.dart';
-import 'package:bluebenxtest/domain/usecases/authentication.usecase.dart';
-import 'package:bluebenxtest/firebase_options.dart';
-import 'package:bluebenxtest/presentation/bloc/login_bloc.dart';
-import 'package:bluebenxtest/presentation/view/login.page.dart';
+import 'package:bluebenxtest/data/dataSources/coins.datasourcer.implements.dart';
+import 'package:bluebenxtest/data/dataSources/coins.datasources.dart';
+import 'package:bluebenxtest/data/repositories/coins.implements.dart';
+import 'package:bluebenxtest/domain/repositories/coins.repository.dart';
+import 'package:bluebenxtest/domain/usecases/coins.usecases.dart';
+import 'package:bluebenxtest/service/http/http.dart';
+
+import 'presentation/coins/coins.dart';
+import 'presentation/login/login.dart';
+
+import 'data/data.dart';
+import 'domain/domain.dart';
+import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,17 +25,13 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  IFireBaseDataSoucer _firebase(BuildContext _) => RepositoryProvider.of(_);
-  IAuthRepository _authRepository(BuildContext _) => RepositoryProvider.of(_);
-  AuthenticationUseCase _authUseCase(BuildContext _) => RepositoryProvider.of(_);
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider<IFireBaseDataSoucer>(
+        RepositoryProvider<IFireBaseDatasoucer>(
             create: (_) => FirebaseImplements(FirebaseAuth.instance)),
         RepositoryProvider<IAuthRepository>(
             create: (_) =>
@@ -42,22 +42,40 @@ class MyApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => LoginBloc(
-            useCase: _authUseCase(context)
-          ))
+          BlocProvider(
+              create: (context) => LoginBloc(useCase: _authUseCase(context)))
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
+          onGenerateRoute: (router) {
+            if (router.name == "/coins") {
+              return MaterialPageRoute(
+                  builder: (context) => MultiRepositoryProvider(
+                        providers: [
+                          RepositoryProvider<IHTTPClientService>(
+                              create: (_) => HTTPClient(
+                                  authUser:
+                                      (router.arguments! as UserCredential))),
+                          RepositoryProvider<ICoinsDataSourcer>(
+                            create: (_) => CoinDatasourceImplements(_client(_)),
+                          ),
+                          RepositoryProvider<ICoinsRepo>(
+                            create: (_) =>
+                                CoinsRepositoryImplements(_coinDatasourcer(_)),
+                          ),
+                          RepositoryProvider<CoinsUseCase>(
+                            create: (_) => CoinsUseCase(_coinRepo(_)),
+                          ),
+                        ],
+                        child: BlocProvider(
+                            child: const CoinsList(),
+                            create: (_) => CoinsBloc(
+                                RepositoryProvider.of<CoinsUseCase>(_))..add(CoinsLoadingEvent())),
+                      ));
+            }
+            return null;
+          },
           theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
             primarySwatch: Colors.blue,
           ),
           home: HomePage(),
@@ -65,4 +83,13 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
+  IFireBaseDatasoucer _firebase(BuildContext _) => RepositoryProvider.of(_);
+  ICoinsDataSourcer _coinDatasourcer(BuildContext _) =>
+      RepositoryProvider.of(_);
+  ICoinsRepo _coinRepo(BuildContext _) => RepositoryProvider.of(_);
+  IHTTPClientService _client(BuildContext _) => RepositoryProvider.of(_);
+  IAuthRepository _authRepository(BuildContext _) => RepositoryProvider.of(_);
+  AuthenticationUseCase _authUseCase(BuildContext _) =>
+      RepositoryProvider.of(_);
 }

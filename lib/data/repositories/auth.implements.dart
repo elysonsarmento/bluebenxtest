@@ -5,7 +5,7 @@ import 'package:bluebenxtest/domain/repositories/auth.repositoy.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepositoryImplementation implements IAuthRepository {
-  final IFireBaseDataSoucer firebase;
+  final IFireBaseDatasoucer firebase;
 
   AuthRepositoryImplementation({required this.firebase});
   @override

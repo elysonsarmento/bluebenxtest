@@ -8,7 +8,7 @@ class FirebaseMock extends Mock implements FirebaseAuth {}
 
 void main() {
   final FirebaseAuth mockFirebase = FirebaseMock();
-  final IFireBaseDataSoucer sut = FirebaseImplements(mockFirebase);
+  final IFireBaseDatasoucer sut = FirebaseImplements(mockFirebase);
 
   setUpAll(
     () {

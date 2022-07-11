@@ -2,7 +2,7 @@ import 'package:bluebenxtest/core/enums/authentication.enum.dart';
 import 'package:bluebenxtest/data/dataSources/firebase.datasources.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseImplements implements IFireBaseDataSoucer {
+class FirebaseImplements implements IFireBaseDatasoucer {
   final FirebaseAuth userCredential;
 
   FirebaseImplements(this.userCredential);

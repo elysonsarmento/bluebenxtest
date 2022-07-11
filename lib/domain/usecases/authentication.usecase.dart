@@ -7,11 +7,12 @@ class AuthenticationUseCase {
 
   AuthenticationUseCase({required repository}) : _repository = repository;
 
-  Future login(String email, String password) async {
+  Future<UserCredential> login(String email, String password) async {
     try {
-  return await _repository.login(UserLogin(email: email, password: password));
-} on Exception catch (e) {
-  print(e);
-}
+      return await _repository
+          .login(UserLogin(email: email, password: password));
+    } catch (e) {
+      rethrow;
+    }
   }
 }

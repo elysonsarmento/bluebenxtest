@@ -10,6 +10,9 @@ class LoginRequest extends LoginState {
 }
 
 class SucessRequest extends LoginState {
+  final UserCredential user;
+
+  SucessRequest(this.user);
 }
 
 class ErrorRequest extends LoginState {
